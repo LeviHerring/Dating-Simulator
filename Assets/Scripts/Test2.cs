@@ -22,7 +22,10 @@ public class Test : MonoBehaviour
     public float moveSpeed;
     public smooth; 
 
-    public int bodyIndex, expressionIndex = 0; 
+    public int bodyIndex, expressionIndex = 0;
+    public float speed 5f;
+    public bool smoothtranstitions = false; 
+
 
     public float ant = sf;     // Update is called once per frame
     void Update()
@@ -47,11 +50,17 @@ public class Test : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Vietnam.SetBody(bodyIndex);
+            if (Input.GetKey(KeyCode.T))
+                Vietnam.TransitionBody(Vietnam.GetSprite(CharacterManager.characterExpressions.cojoinedFingers), speed, smoothtranstitions);
+            else
+               Vietnam.SetBody(bodyIndex);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            if (Input.GetKey(KeyCode.T))
+                Vietnam.TransitionBody(Vietnam.GetSprite(bodyIndex), speed, smoothtranstitions);
+            else
             Vietnam.SetExpression(expressionIndex);
         }
     }

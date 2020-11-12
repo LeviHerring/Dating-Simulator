@@ -7,6 +7,8 @@ public class Emotions : MonoBehaviour
     // Start is called before the first frame update
     public Sprite GetSprite(int index = 0)
     {
+        //Sprite sprite = Resources.Load<Sprite> ("Images/Characters/" + characterName);
+        //return sprite
         Sprite[] sprites = Resources.LoadAll<Sprite>("Images/Characters/" + characterName);
         return sprites[index];
     }
@@ -32,7 +34,7 @@ public class Emotions : MonoBehaviour
     {
         renderers.expressionRenderer.sprite = sprite;
     }
-    bool isTransitioningBody {get { transitioningBody != null; } }
+    bool isTransitioningBody {get { return transitioningBody != null; } }
     Coroutine transitioningBody = null; 
 
     public void TransitionBody(Sprite Sprite, float speed, bool smooth)
@@ -61,19 +63,34 @@ public class Emotions : MonoBehaviour
                 break; 
             }
         }
+
+        if (renderers.bodyRenderer.sprite != sprite)
+        {
+            Image image = GameObject.Instantiate(renderers.bodyRenderer.gameObject, renderers.bodyRenderer.transform.parent).GetComponent<Image>();
+            renderers.allBodyRenderers.Add (image);
+            renderers.BodyRenderer = image;
+            image.color = GlobalF.SetAlpha(image.color, 0f);
+            image.sprite = sprite; 
+        }
+
+        while (GlobalF.TransitionImages(ref renderers.bodyRenderer, ref renderers.allBodyRenderers, speed, smooth))
+            yield return new WaitForEndOfFrame();
+
+        StopTransitioningBody(); 
+
     }
 
     public Character (string _name, bool enableOnStart = true)
     {
         CharacterManager cm = CharacterManager.instance;
         GameObject prefab = Resources.Load("Characters/Character[" + _name + "]") as GameObject;
-        GameObject ob = GameObject.Instantiate(prefa, cm.characterPanel);
+        GameObject ob = GameObject.Instantiate(prefab, cm.characterPanel);
 
         root = ob.GetComponent<RectTransform>();
         characterName = _name;
 
-        renderers.bodyRenderer = ob.transform.Find("bodyLayer").GetComponent<Image>();
-        renderers.expressionRenderer = ob.transform.Find("expressionLayer").GetComponent<Image>();
+        renderers.bodyRenderer = ob.transform.Find("BodyLayer").GetComponentInChildren<Image>();
+        renderers.expressionRenderer = ob.transform.Find("ExpressionLayer").GetComponentInChildren<Image>();
         Renderers.allBodyRenderers.Add(Renderers.bodyRenderer);
         Renderers.allExpressionRenderers.Add(Renderers.expressionRenderer);
     }
