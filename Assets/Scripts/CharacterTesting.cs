@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test : MonoBehaviour
+public class CharacterTesting : MonoBehaviour
 {
     public Character Vietnam;
     public Character UK;
@@ -11,7 +11,7 @@ public class Test : MonoBehaviour
     {
 
         Vietnam = CharacterManager.instance.GetCharacter("Vietnam", enableCreatedCharacterOnStart: true);
-        
+
 
     }
 
@@ -24,7 +24,7 @@ public class Test : MonoBehaviour
 
     public int bodyIndex, expressionIndex = 0;
     public float speed 5f;
-    public bool smoothtranstitions = false; 
+    public bool smoothtranstitions = false;
 
 
     public float ant = sf;     // Update is called once per frame
@@ -53,7 +53,7 @@ public class Test : MonoBehaviour
             if (Input.GetKey(KeyCode.T))
                 Vietnam.TransitionBody(Vietnam.GetSprite(CharacterManager.characterExpressions.cojoinedFingers), speed, smoothtranstitions);
             else
-               Vietnam.SetBody(bodyIndex);
+                Vietnam.SetBody(bodyIndex);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -61,9 +61,6 @@ public class Test : MonoBehaviour
             if (Input.GetKey(KeyCode.T))
                 Vietnam.TransitionBody(Vietnam.GetSprite(bodyIndex), speed, smoothtranstitions);
             else
-            Vietnam.SetExpression(expressionIndex);
+                Vietnam.SetExpression(expressionIndex);
         }
     }
-
-}
-
