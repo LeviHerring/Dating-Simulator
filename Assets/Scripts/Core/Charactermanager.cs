@@ -20,11 +20,11 @@ public class CharacterManager : MonoBehaviour
     public Character GetCharacter(string characterName, bool createCharacterIfDoesNotExist = true, bool enableCreatedCharacterOnStart = true)
     {
         int index = -1;
-        if characterDictionary.TryGetValue (characterDictionaryName, out index))
+        if (characterDictionary.TryGetValue (characterDictionaryName, out index))
         {
             return characters[index];
         }
-        else if createCharacter(DoesNotExist)
+        else if (createCharacter(DoesNotExist))
         {
             return CreateCharacter(characterName, enableCreatedCharacterOnStart);
         }

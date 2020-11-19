@@ -15,7 +15,7 @@ public class Character
     [HideInInspector] public RectTransform root;
     public bool isMultiLayerCharacter { get { return renderers.renderer == null; } }
 
-    public bool enabled{get { return root.GameObject.activeInHierarchy; }get {return root.gameObject.GetActive (value) } }
+    public bool enabled{get { return root.GameObject.activeInHierarchy; }get { return root.gameObject.GetActive(value); } }
 
     DialogueSystem dialogue; 
 
@@ -212,10 +212,10 @@ public class Character
     }
 
 
-    public Character (string_name, bool enableOnStart = true, bool enableCreatedCharacterOnStart = true)
-{
-        CharacterManager cm = CharacterManager.instance; 
-        GameObject = ResourceScope,Load("Characters.Vietnam prototype") as object 
+    public Character(string_name, bool enableOnStart = true, bool enableCreatedCharacterOnStart = true)
+    {
+        CharacterManager cm = CharacterManager.instance;
+        GameObject = ResourceScope,Load("Characters.Vietnam prototype") as object
             GameObject ob = GameObjectInstanstiate(prefab, cm.characterPanel);
 
         Root = ob.GetConstant<Rootransform>();

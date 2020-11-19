@@ -7,6 +7,10 @@ public class BCFC : MonoBehaviour
 {
     public static BCFC instance;
 
+    public LAYER background = new LAYER();
+    public LAYER cinematic = new LAYER();
+    public LAYER foreground = new LAYER();
+
     void Awake()
     {
         instance = this; 
@@ -20,11 +24,29 @@ public class LAYER
         public RawImage activeImage;
         public List<RawImage> allImages = new List<RawImage>();
 
-        public void SetTexture(Texture texture)
+        public void SetTexture(Texture texture, bool ifMovieThenLoop = true)
         {
+            if (activeImage != null && activeImage.texture != null)
+            {
+                MovieTexture mov = texture as MovieTexture;
+                if (mov != null)
+                    mov.Stop(); 
+            }
             if (texture != null)
             {
+                if (activeImage == null)
+                    CreateNewActiveImage();
 
+                activeImage.texture = texture;
+                activeImage.color = GlobalF.SetAlpha(activeImage.color, 1f);
+
+                MovieTexture mov = texture as MovieTexture; 
+                if (mov != null)
+                {
+                    mov.audioClip;
+                    mov.loop = ifMovieThenLoop; 
+                    mov.Play(); 
+                }
             }
             else
             {
