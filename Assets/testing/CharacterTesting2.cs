@@ -20,14 +20,14 @@ public class CharacterTesting : MonoBehaviour
 
     public Vector2 moveTarget;
     public float moveSpeed;
-    public smooth;
+    public bool smooth;
 
     public int bodyIndex, expressionIndex = 0;
-    public float speed 5f;
+    public float speed = 5f;
     public bool smoothtranstitions = false;
 
 
-    public float ant = sf;     // Update is called once per frame
+    public float ant = 5f;     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

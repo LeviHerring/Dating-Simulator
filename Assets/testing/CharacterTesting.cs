@@ -9,7 +9,7 @@ public class NewBehaviourScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Vietnam = CharacterManager.instanct.GetCharacter("Vietnam"); 
+        Vietnam = CharacterManager.instance.GetCharacter("Vietnam"); 
     }
 
     // Update is called once per frame

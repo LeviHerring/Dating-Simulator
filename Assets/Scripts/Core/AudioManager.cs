@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    public SONG PlaySong(AudioClip song, float maxVolume = 1f, float pitch = 1f, float startingVolume = 0f, bool playOnStart = true, bool loop = true)
+    public void PlaySong(AudioClip song, float maxVolume = 1f, float pitch = 1f, float startingVolume = 0f, bool playOnStart = true, bool loop = true)
     {
         if (song != null)
         {
@@ -59,6 +59,8 @@ public class AudioManager : MonoBehaviour
 
         StopAllCoroutines();
         StartCoroutine(VolumeLeveling());
+
+
         
     }
 
@@ -83,7 +85,7 @@ public class AudioManager : MonoBehaviour
             {
                 if (song.volume < song.maxVolume)
                 {
-                    song.color = songSmoothTransitions ? Mathf.Lerp(song.volume, song.maxVolume, speed) : Mathf.MoveTowards(song.volume, song.maxVolume, speed);
+                    song.volume = songSmoothTransitions ? Mathf.Lerp(song.volume, song.maxVolume, speed) : Mathf.MoveTowards(song.volume, song.maxVolume, speed);
                     anyValueChanged = true;
                 }
 
@@ -106,9 +108,12 @@ public class AudioManager : MonoBehaviour
             }
 
         }
+
+        return anyValueChanged;
+
     }
 
-
+          
     public static AudioSource CreateNewSource(string _name)
     {
         AudioSource newSource = new GameObject(_name).AddComponent<AudioSource>();
