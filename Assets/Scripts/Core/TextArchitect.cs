@@ -32,6 +32,15 @@ public class TextArchitect
 
     }
 
+    public void Stop()
+    {
+        if (isConstructing)
+        {
+            DialogueSystem.instance.StopCoroutine(buildProcess);
+        }
+        buildProcess = null;
+    }
+
     IEnumerator Construction()
     {
         int runsThisFrame = 0;
@@ -48,6 +57,25 @@ public class TextArchitect
             if (isATag && useEncapsulation)
             {
                 curText = _currentText;
+                ENCAPSULATED_TEXT encapsulation = new ENCAPSULATED_TEXT(string.Format("<{0}>", section), speechAndTags, a);
+                while (!encapsulation.isDone)
+                {
+                    bool stepped = encapsulation.Step();
+
+                    _currentText = curText + encapsulation.displayText;
+
+                    if (stepped)
+                    {
+                        runsThisFrame++;
+                        int maxRunsPerFrame = skip ? 5 : charactersPerFrame;
+                        if (runsThisFrame == maxRunsPerFrame)
+                        {
+                            runsThisFrame = 0;
+                            yield return new WaitForSeconds(skip ? 0.01f : 0.01f * speed);
+                        }
+                    }
+                }
+                a = encapsulation.speechAndTagsArrayProgress + 1;
             }
             else
             {
@@ -72,13 +100,16 @@ public class TextArchitect
 
     private class ENCAPSULATED_TEXT
     {
-        private string tag, endingTag;
-        private string currentText, targetText;
+        private string tag = "";
+        private string endingTag = "";
+        private string currentText = "";
+        private string targetText = "";
 
         public string displayText { get { return _displayText; } }
         private string _displayText = "";
 
         private string[] allSpeechAndTagsArray;
+        public int speechAndTagsArrayProgress {get { return arrayProgress; } }
         private int arrayProgress = 0;
 
         public bool isDone { get { return _isDone; } }
@@ -106,7 +137,7 @@ public class TextArchitect
                     subEncapsulator = new ENCAPSULATED_TEXT(string.Format("<{0}>", nextPart ), allSpeechAndTagsArray, arrayProgress + 1 );
                 }
 
-                arrayProgress++;
+                this.arrayProgress++;
             }
 
             
@@ -156,12 +187,23 @@ public class TextArchitect
                                     encapsulator.currentText += taggedText;
                                     encapsulator.targetText += taggedText;
 
+                                    UpdateArrayProgress(2);
+
                                 }
+                            }
+
+                            else
+                            {
+                                subEncapsulator = new ENCAPSULATED_TEXT(string.Format("<{0}>", nextPart), allSpeechAndTagsArray, arrayProgress + 1);
+                                subEncapsulator.encapsulator = this;
+
+                                UpdateArrayProgress();
                             }
                         }
                         else
                         {
-
+                            targetText += nextPart;
+                            UpdateArrayProgress();
                         }
                     }
                     else
@@ -190,7 +232,14 @@ public class TextArchitect
 
             }
         }
+        void UpdateArrayProgress(int val = 1)
+        {
+            arrayProgress += val;
 
+            if (encapsulator != null)
+                encapsulator.UpdateArrayProgress(val);
+        }
+       
         void UpdateDisplay(string subValue )
         {
             _displayText = string.Format("{0}{1}{2}{3}", tag, currentText, subValue, endingTag);
