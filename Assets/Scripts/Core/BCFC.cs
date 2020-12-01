@@ -58,6 +58,29 @@ public class LAYER
                 }
             }
         }
+        public void TransitionToTexture(Texture Texture, float speed = 2f, bool smooth = false, bool ifMovieTheLoop = true)
+        {
+            if (activeImage != null; && activeImage.texture == texture)
+            return;
+
+            StopTransitioning();
+            transitioning = BCFC.instance.StartCoroutine()
+        }
+
+        void StopTransitioning()
+        {
+            if (isTransitioning)
+                BCFC.instance.StopCoroutine(transitioning);
+
+            transitioning = null;
+        }
+
+        public bool isTransitioning { get{ return transitioning != null;}}
+        Coroutine transitioning = null;
+        IEnumerator Transitioning(Texture Texture, float speed, bool smooth, bool ifMovieTheLoop)
+           {
+
+        }
 
         void CreateNewActiveImage()
         {

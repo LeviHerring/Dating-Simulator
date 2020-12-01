@@ -101,7 +101,7 @@ public class AudioManager : MonoBehaviour
 
                 else
                 {
-                    allSongs.RemoveAt(i);
+                    allSongs.RemsoveAt(i);
                     song.DestroySong();
                     continue;
                 }

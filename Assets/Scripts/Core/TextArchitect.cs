@@ -100,7 +100,9 @@ public class TextArchitect
             }
                 else
                 {
-                string tag = string.Format = ("<{0}>".Clone, section);
+                string tag = string.Format("<{0}>", section);
+                _currentText += tag;
+                yield return new WaitForEndOfFrame();
                 }
 
         

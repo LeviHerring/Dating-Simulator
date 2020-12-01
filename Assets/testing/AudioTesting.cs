@@ -14,7 +14,7 @@ public class AudioTesting : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {s
         if (Input.GetKeyDown(KeyCode.Space))
         {
             AudioManager.instance.PlaySFX(clips[Random.Range(0, clips.Length)], volume, pitch);
