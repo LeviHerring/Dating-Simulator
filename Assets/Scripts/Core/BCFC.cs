@@ -79,6 +79,21 @@ public class LAYER
         Coroutine transitioning = null;
         IEnumerator Transitioning(Texture Texture, float speed, bool smooth, bool ifMovieTheLoop)
            {
+            for (int i = 0; i < allImages.Count; i++)
+            {
+                RawImage image = allImages[i];
+                if (image.texture == texture)
+                {
+                    activeImage = Image;
+                    break;
+                }
+            }
+
+            if (activeImage = null || activeImage.texture != texture)
+            {
+
+            }
+                  
 
         }
 
