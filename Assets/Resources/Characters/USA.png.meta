@@ -1,139 +1,73 @@
 fileFormatVersion: 2
-guid: e37ca5178898eac41803389270a69f09
+guid: 341181aa79c2a60449eec443ea341726
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5520217733538639933
-    second: Raelin (1)_0
+      213: -7992286938110287893
+    second: USA_0
   - first:
-      213: -2947336091272343885
-    second: Raelin (1)_1
+      213: 4090429371537563106
+    second: USA_1
   - first:
-      213: -8205535945135773833
-    second: Raelin (1)_2
+      213: 1207465883108799606
+    second: USA_2
   - first:
-      213: -635643063637080883
-    second: Raelin (1)_3
+      213: 2454492486450163515
+    second: USA_3
   - first:
-      213: -2447513882008901360
-    second: Raelin (1)_4
+      213: 6588240886246792822
+    second: USA_4
   - first:
-      213: 8766649622235234254
-    second: Raelin (1)_5
+      213: 3667323137977235192
+    second: USA_5
   - first:
-      213: -397840188021654031
-    second: Raelin (1)_6
+      213: -3624828675611640464
+    second: USA_6
   - first:
-      213: -5380370210159619840
-    second: Raelin (1)_7
+      213: -5420424276647024653
+    second: USA_7
   - first:
-      213: -9137163873606078077
-    second: Raelin (1)_8
+      213: 7440368390592865074
+    second: USA_8
   - first:
-      213: -1795806233671417576
-    second: Raelin (1)_9
+      213: 2991283187311846913
+    second: USA_9
   - first:
-      213: -5416183441563581624
-    second: Raelin (1)_10
+      213: 2967460774917025307
+    second: USA_10
   - first:
-      213: -669766351864446719
-    second: Raelin (1)_11
+      213: 7521570160395612692
+    second: USA_11
   - first:
-      213: 4829119945600777635
-    second: Raelin (1)_12
+      213: 6089478436207147012
+    second: USA_12
   - first:
-      213: -1426234573602537439
-    second: Raelin (1)_13
+      213: -6236958193317272135
+    second: USA_13
   - first:
-      213: -5993639915401755397
-    second: Raelin (1)_14
+      213: 4706006685524090401
+    second: USA_14
   - first:
-      213: 2105440749450447872
-    second: Raelin (1)_15
+      213: 4697914955513553995
+    second: USA_15
   - first:
-      213: 1939551034409324918
-    second: Raelin (1)_16
+      213: -3768133407055210203
+    second: USA_16
   - first:
-      213: 7468062210461208826
-    second: Raelin (1)_17
+      213: 4930112165925092940
+    second: USA_17
   - first:
-      213: -6944228686276424760
-    second: Raelin (1)_18
+      213: 8768178214380352061
+    second: USA_18
   - first:
-      213: -3942485716806496343
-    second: Raelin (1)_19
+      213: 9192511470506870330
+    second: USA_19
   - first:
-      213: 751941008368622451
-    second: Raelin (1)_20
+      213: -8836725510568200182
+    second: USA_20
   - first:
-      213: 2054780693244637369
-    second: Raelin (1)_21
-  - first:
-      213: -5140847116205034359
-    second: Raelin (1)_0
-  - first:
-      213: -8259148724945109098
-    second: Raelin (1)_1
-  - first:
-      213: -4733284607497661281
-    second: Raelin (1)_2
-  - first:
-      213: -2516702649668397105
-    second: Raelin (1)_3
-  - first:
-      213: 5648397065891717793
-    second: Raelin (1)_4
-  - first:
-      213: 4062300669410173711
-    second: Raelin (1)_5
-  - first:
-      213: 1400707800568498003
-    second: Raelin (1)_6
-  - first:
-      213: -3280665792470957861
-    second: Raelin (1)_7
-  - first:
-      213: 942468208037615626
-    second: Raelin (1)_8
-  - first:
-      213: 5150641469188941696
-    second: Raelin (1)_9
-  - first:
-      213: -6982108485404672635
-    second: Raelin (1)_10
-  - first:
-      213: -8652584530887345821
-    second: Raelin (1)_11
-  - first:
-      213: 5766234761334133878
-    second: Raelin (1)_12
-  - first:
-      213: -1487869598316207209
-    second: Raelin (1)_13
-  - first:
-      213: -4677714528896682851
-    second: Raelin (1)_14
-  - first:
-      213: -347619907485061078
-    second: Raelin (1)_15
-  - first:
-      213: -3976641544307319357
-    second: Raelin (1)_16
-  - first:
-      213: 1796114062744465070
-    second: Raelin (1)_17
-  - first:
-      213: 4166603693543819917
-    second: Raelin (1)_18
-  - first:
-      213: -2598334016879582965
-    second: Raelin (1)_19
-  - first:
-      213: 1570017137530246614
-    second: Raelin (1)_20
-  - first:
-      213: 3521822179402148655
-    second: Raelin (1)_21
+      213: -1214038730110628295
+    second: USA_21
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -163,7 +97,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -291,7 +225,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Raelin (1)_0
+      name: USA_0
       rect:
         serializedVersion: 2
         x: 4
@@ -305,14 +239,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 984f10209ca08a8b0800000000000000
-      internalID: -5140847116205034359
+      spriteID: bef11feef51b51190800000000000000
+      internalID: -7992286938110287893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_1
+      name: USA_1
       rect:
         serializedVersion: 2
         x: 487
@@ -326,14 +260,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69fb6865efb916d80800000000000000
-      internalID: -8259148724945109098
+      spriteID: 2ed125567df14c830800000000000000
+      internalID: 4090429371537563106
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_2
+      name: USA_2
       rect:
         serializedVersion: 2
         x: 4
@@ -347,14 +281,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f94174d3abeff4eb0800000000000000
-      internalID: -4733284607497661281
+      spriteID: 6747a11c2d7c1c010800000000000000
+      internalID: 1207465883108799606
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_3
+      name: USA_3
       rect:
         serializedVersion: 2
         x: 487
@@ -368,14 +302,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc71b313640e21dd0800000000000000
-      internalID: -2516702649668397105
+      spriteID: b3f2ab679eb101220800000000000000
+      internalID: 2454492486450163515
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_4
+      name: USA_4
       rect:
         serializedVersion: 2
         x: 4
@@ -389,14 +323,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a2a5d67433236e40800000000000000
-      internalID: 5648397065891717793
+      spriteID: 67ed1771e222e6b50800000000000000
+      internalID: 6588240886246792822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_5
+      name: USA_5
       rect:
         serializedVersion: 2
         x: 487
@@ -410,14 +344,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0366039fe0306830800000000000000
-      internalID: 4062300669410173711
+      spriteID: 8f634b3b6f2f4e230800000000000000
+      internalID: 3667323137977235192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_6
+      name: USA_6
       rect:
         serializedVersion: 2
         x: 4
@@ -431,14 +365,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3570107c250507310800000000000000
-      internalID: 1400707800568498003
+      spriteID: 07db482568502bdc0800000000000000
+      internalID: -3624828675611640464
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_7
+      name: USA_7
       rect:
         serializedVersion: 2
         x: 487
@@ -452,14 +386,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd04efce7dbb872d0800000000000000
-      internalID: -3280665792470957861
+      spriteID: 3f7ec8ac6d8c6c4b0800000000000000
+      internalID: -5420424276647024653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_8
+      name: USA_8
       rect:
         serializedVersion: 2
         x: 4
@@ -473,14 +407,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a085e2087d1541d00800000000000000
-      internalID: 942468208037615626
+      spriteID: 233255761af714760800000000000000
+      internalID: 7440368390592865074
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_9
+      name: USA_9
       rect:
         serializedVersion: 2
         x: 487
@@ -494,14 +428,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08727608021ca7740800000000000000
-      internalID: 5150641469188941696
+      spriteID: 106225ad53c238920800000000000000
+      internalID: 2991283187311846913
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_10
+      name: USA_10
       rect:
         serializedVersion: 2
         x: 4
@@ -515,14 +449,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58db63843519a1f90800000000000000
-      internalID: -6982108485404672635
+      spriteID: b1ea5dd3ad98e2920800000000000000
+      internalID: 2967460774917025307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_11
+      name: USA_11
       rect:
         serializedVersion: 2
         x: 487
@@ -536,14 +470,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3697b676638dbe780800000000000000
-      internalID: -8652584530887345821
+      spriteID: 412fe8bb53cf16860800000000000000
+      internalID: 7521570160395612692
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_12
+      name: USA_12
       rect:
         serializedVersion: 2
         x: 4
@@ -557,14 +491,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67494d0f6f7c50050800000000000000
-      internalID: 5766234761334133878
+      spriteID: 4083781df5c228450800000000000000
+      internalID: 6089478436207147012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_13
+      name: USA_13
       rect:
         serializedVersion: 2
         x: 487
@@ -578,14 +512,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7936240cb760a5be0800000000000000
-      internalID: -1487869598316207209
+      spriteID: 9b5ac58619fd179a0800000000000000
+      internalID: -6236958193317272135
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_14
+      name: USA_14
       rect:
         serializedVersion: 2
         x: 4
@@ -599,14 +533,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d94fd686b6b651fb0800000000000000
-      internalID: -4677714528896682851
+      spriteID: 12ed641a5281f4140800000000000000
+      internalID: 4706006685524090401
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_15
+      name: USA_15
       rect:
         serializedVersion: 2
         x: 487
@@ -620,14 +554,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a20bf7139810d2bf0800000000000000
-      internalID: -347619907485061078
+      spriteID: b44616ce2c8523140800000000000000
+      internalID: 4697914955513553995
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_16
+      name: USA_16
       rect:
         serializedVersion: 2
         x: 4
@@ -641,14 +575,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cd5088a59120d8c0800000000000000
-      internalID: -3976641544307319357
+      spriteID: 529113671a6e4bbc0800000000000000
+      internalID: -3768133407055210203
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_17
+      name: USA_17
       rect:
         serializedVersion: 2
         x: 487
@@ -662,14 +596,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eaea7fd49341de810800000000000000
-      internalID: 1796114062744465070
+      spriteID: c4efbc0e4e64b6440800000000000000
+      internalID: 4930112165925092940
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_18
+      name: USA_18
       rect:
         serializedVersion: 2
         x: 4
@@ -683,14 +617,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8a8281dbffb2d930800000000000000
-      internalID: 4166603693543819917
+      spriteID: d32b57351a3dea970800000000000000
+      internalID: 8768178214380352061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_19
+      name: USA_19
       rect:
         serializedVersion: 2
         x: 487
@@ -704,14 +638,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b01241c6afcd0fbd0800000000000000
-      internalID: -2598334016879582965
+      spriteID: a3604497a7c529f70800000000000000
+      internalID: 9192511470506870330
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_20
+      name: USA_20
       rect:
         serializedVersion: 2
         x: 4
@@ -725,14 +659,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d514cda442d9c510800000000000000
-      internalID: 1570017137530246614
+      spriteID: a0833f497f4ad5580800000000000000
+      internalID: -8836725510568200182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_21
+      name: USA_21
       rect:
         serializedVersion: 2
         x: 487
@@ -746,8 +680,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2b6b5ddc9600e030800000000000000
-      internalID: 3521822179402148655
+      spriteID: 93e803c053ed62fe0800000000000000
+      internalID: -1214038730110628295
       vertices: []
       indices: 
       edges: []

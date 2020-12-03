@@ -58,13 +58,13 @@ public class LAYER
                 }
             }
         }
-        public void TransitionToTexture(Texture Texture, float speed = 2f, bool smooth = false, bool ifMovieTheLoop = true)
+        public void TransitionToTexture(Texture Texture, float speed = 2f, bool smooth = false, bool ifMovieThenLoop = true)
         {
-            if (activeImage != null; && activeImage.texture == texture)
+            if (activeImage != null && activeImage.texture == texture)
             return;
 
             StopTransitioning();
-            transitioning = BCFC.instance.StartCoroutine()
+            transitioning = BCFC.instance.StartCoroutine();
         }
 
         void StopTransitioning()
@@ -77,24 +77,51 @@ public class LAYER
 
         public bool isTransitioning { get{ return transitioning != null;}}
         Coroutine transitioning = null;
-        IEnumerator Transitioning(Texture Texture, float speed, bool smooth, bool ifMovieTheLoop)
+        IEnumerator Transitioning(Texture Texture, float speed, bool smooth, bool ifMovieThenLoop)
            {
-            for (int i = 0; i < allImages.Count; i++)
+            if (texture != null)
             {
-                RawImage image = allImages[i];
-                if (image.texture == texture)
+                for (int i = 0; i < allImages.Count; i++)
                 {
-                    activeImage = Image;
-                    break;
+                    RawImage image = allImages[i];
+                    if (image.texture == texture)
+                    {
+                        activeImage = Image;
+                        break;
+                    }
                 }
-            }
 
-            if (activeImage = null || activeImage.texture != texture)
+
+
+
+
+
+                if (activeImage = null || activeImage.texture != texture)
+                {
+                    CreateNewActiveImage();
+                    activeImage.texture = texture;
+                    activeImage.color = GlobalF.SetAlpha(activeImage.color, 1f);
+
+                    MovieTexture mov = texture as MovieTexture;
+                    if (mov != null)
+                    {
+
+                        mov.loop = ifMovieThenLoop;
+                        mov.Play();
+                    }
+                }
+
+            }
+            else
             {
+                activeImage = null;
+
+                while (GlobalF.TransitionRawImages(ref activeImage, ref allImages, speed, smooth))
+                    yield return new WaitForEndOfFrame();
+                StopTransitioning();
+
 
             }
-                  
-
         }
 
         void CreateNewActiveImage()

@@ -7,8 +7,8 @@ public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager instance;
 
-    public RootTransform characterPanel;
-    public list<Character> characters = new list<Character>();
+    public RectTransform characterPanel;
+    public List<Character> characters = new List<Character>();
 
     public Dictionary<string, int> characterDictionary = new Dictionary<string, int>();
 
@@ -19,15 +19,20 @@ public class CharacterManager : MonoBehaviour
 
     public Character GetCharacter(string characterName, bool createCharacterIfDoesNotExist = true, bool enableCreatedCharacterOnStart = true)
     {
+        //search our dictionary to find the character quickly if it is already in our scene.
         int index = -1;
-        if (characterDictionary.TryGetValue (characterDictionaryName, out index))
+        if (characterDictionary.TryGetValue(characterName, out index))
         {
             return characters[index];
         }
-        else if (createCharacter(DoesNotExist))
+        else if (createCharacterIfDoesNotExist)//the character may not have a prefab such as if this is a character who's name only is used
         {
-            return CreateCharacter(characterName, enableCreatedCharacterOnStart);
+            //ensure the character exists before trying to load it.
+            if (Resources.Load("Characters/Character[" + characterName + "]") != null)
+                return CreateCharacter(characterName, enableCreatedCharacterOnStart);
+            return null;
         }
+
         return null;
     }
     public Character CreateCharacter(string characterName, bool enableOnStart = true)
@@ -59,4 +64,4 @@ public class CharacterManager : MonoBehaviour
     public static CHARACTEREXPRESSIONS characterExpressions = new CHARACTEREXPRESSIONS();
 }
 
-}
+

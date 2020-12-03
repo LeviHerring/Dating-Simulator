@@ -1,22 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
-using System.Dynamic;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Runtime.Remoting.Messaging;
-using System.Runtime.Versioning;
 using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
 public class Character
 {
-    public string CharacterName;
+    public string characterName;
     [HideInInspector] public RectTransform root;
-    public bool isMultiLayerCharacter { get { return renderers.renderer == null; } }
 
-    public bool enabled{get { return root.GameObject.activeInHierarchy; } get { return root.gameObject.GetActive(value); } }
+    public bool enabled {get{ return root.gameObject.activeInHierarchy;} set{ root.gameObject.SetActive (value);}}
 
     DialogueSystem dialogue; 
 
@@ -25,7 +18,7 @@ public class Character
         if (!enabled)
             enabled = true;
         if (!add)
-            dialogue.Say(speech, CharacterName);
+            dialogue.Say(speech, characterName);
         else
             dialogue.SayAdd(speech, characterName);
     }
@@ -120,10 +113,9 @@ public class Character
     }
 
     public void SetBody(int index)
-    {
-        renderers.bodyRenderer.sprite = GetSprite(index);
-
-    }
+	{
+		renderers.bodyRenderer.sprite = GetSprite (index);
+	}
 
     public void SetBody(Sprite sprite)
     {
@@ -143,12 +135,10 @@ public class Character
     bool isTransitioningBody { get { return transitioningBody != null; } }
     Coroutine transitioningBody = null;
 
-    public void TransitionBody(Sprite Sprite, float speed, bool smooth)
+    public void TransitionBody(Sprite sprite, float speed, bool smooth)
     {
-        if (renderers.bodyRenderer.sprite == sprite)
-            return;
         StopTransitioningBody();
-        transitioningBody = CharacterManager.instance.StartCoroutine(TransitionBody(sprite, speed, smooth));
+        transitioningBody = CharacterManager.instance.StartCoroutine(TransitioningBody(sprite, speed, smooth));
     }
 
     void StopTransitioningBody()
@@ -158,6 +148,7 @@ public class Character
         transitioningBody = null;
     }
 
+
     public IEnumerator TransitioningBody(Sprite sprite, float speed, bool smooth)
     {
         for (int i = 0; i < renderers.allBodyRenderers.Count; i++)
@@ -165,7 +156,7 @@ public class Character
             Image image = renderers.allBodyRenderers[i];
             if (image.sprite == sprite)
             {
-                renderers.bodyRenderer = Image;
+                renderers.bodyRenderer = image;
                 break;
             }
         }
@@ -186,7 +177,65 @@ public class Character
 
     }
 
-    public Character(string _name, bool enableOnStart = true)
+
+
+    bool isTransitioningExpression { get { return transitioningExpression != null; } }
+    Coroutine transitioningExpression = null;
+
+    public void TransitionExpression(Sprite sprite, float speed, bool smooth)
+    {
+        if (renderers.expressionRenderer.sprite == sprite)
+            return;
+
+        StopTransitioningExpression();
+        transitioningExpression = CharacterManager.instance.StartCoroutine(TransitioningExpression(sprite, speed, smooth));
+    }
+
+    void StopTransitioningExpression()
+    {
+        if (isTransitioningExpression)
+            CharacterManager.instance.StopCoroutine(transitioningExpression);
+        transitioningExpression = null;
+    }
+
+    public IEnumerator TransitioningExpression(Sprite sprite, float speed, bool smooth)
+    {
+        for (int i = 0; i < renderers.allExpressionRenderers.Count; i++)
+        {
+            Image image = renderers.allExpressionRenderers[i];
+            if (image.sprite == sprite)
+            {
+                renderers.expressionRenderer = image;
+                break;
+            }
+        }
+
+        if (renderers.expressionRenderer.sprite != sprite)
+        {
+            Image image = GameObject.Instantiate(renderers.expressionRenderer.gameObject, renderers.expressionRenderer.transform.parent).GetComponent<Image>();
+            renderers.allExpressionRenderers.Add(image);
+            renderers.expressionRenderer = image;
+            image.color = GlobalF.SetAlpha(image.color, 0f);
+            image.sprite = sprite;
+        }
+
+        while (GlobalF.TransitionImages(ref renderers.expressionRenderer, ref renderers.allExpressionRenderers, speed, smooth))
+            yield return new WaitForEndOfFrame();
+
+        Debug.Log("done");
+        StopTransitioningExpression();
+    }
+
+
+
+
+
+
+
+
+
+
+    public Character(string _name, bool enableOnStart = true, bool enableCreatedCharacterOnStart = true)
     {
         CharacterManager cm = CharacterManager.instance;
         GameObject prefab = Resources.Load("Characters/Character[" + _name + "]") as GameObject;
@@ -197,10 +246,14 @@ public class Character
 
         renderers.bodyRenderer = ob.transform.Find("BodyLayer").GetComponentInChildren<Image>();
         renderers.expressionRenderer = ob.transform.Find("ExpressionLayer").GetComponentInChildren<Image>();
-        Renderers.allBodyRenderers.Add(Renderers.bodyRenderer);
-        Renderers.allExpressionRenderers.Add(Renderers.expressionRenderer);
-    }
+        renderers.allBodyRenderers.Add(renderers.bodyRenderer);
+        renderers.allExpressionRenderers.Add(renderers.expressionRenderer);
 
+
+        dialogue = DialogueSystem.instance;
+        enabled = enableOnStart; 
+    }
+    
 
     [System.Serializable]
     public class Renderers
@@ -211,32 +264,5 @@ public class Character
         public List<Image> allBodyRenderers = new List<Image>();
         public List<Image> allExpressionRenderers = new List<Image>();
     }
-
-
-    public Character(string_name, bool enableOnStart = true, bool enableCreatedCharacterOnStart = true)
-    {
-        CharacterManager cm = CharacterManager.instance;
-        GameObject = ResourceScope.Load("Characters.Vietnam prototype") as object
-            GameObject ob = GameObject.Instanstiate(prefab, cm.characterPanel);
-
-        Root = ob.GetConstant<Rootransform>();
-        CharacterName = _name;
-
-        renderers.renderer = ob.GetComponentInChildren(RawImage)();
-        if (isMultiLayerCharacter)
-        {
-            renderers.bodyRenderer = ob.transform.Find("bodyLayers").GetComponent<Image>();
-            renderers.expressionRenderer = ob.transform.Find("expressionLayer").GetComponent<Image>();
-        }
-    dialogue = DialogueSystem.Instance;
-        enabled = enableOnStart; 
-    }
-    class renderers
-    {
-        public RawImage renderer; 
-
-        public Image bodyRenderer;
-        public Image expressionRenderer;
-    }
-    Renderers renderers = new Renderers(); 
+    public Renderers renderers = new Renderers();
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TextArchitect
@@ -33,6 +34,12 @@ public class TextArchitect
 
         buildProcess = DialogueSystem.instance.StartCoroutine(Construction());
 
+    }
+
+    public TextArchitect(TextMeshProUGUI tmprotext, string say, string v, int charactersPerFrame, float speed)
+    {
+        this.charactersPerFrame = charactersPerFrame;
+        this.speed = speed;
     }
 
     public void Stop()

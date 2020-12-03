@@ -8,6 +8,9 @@ public class LayerTesting : MonoBehaviour
 
     public Texture tex;
     public MovieTexture mov;
+
+    public float speed;
+    public bool smooth;
     void Start()
     {
         BCFC.instance;  
@@ -26,14 +29,17 @@ public class LayerTesting : MonoBehaviour
 
         if (Input.GetKey(KeyCode.T))
         {
-
+            if (Input.GetKeyDown(KeyCode.A))
+                layer.TransitionToTexture(tex, speed, smooth);
+            else if (Input.GetKeyDown(KeyCode.S))
+                layer.TransitionToTexture(mov);
         }
         else
         {
             if (Input.GetKeyDown(KeyCode.A))
                 layer.SetTexture(tex);
             else if (Input.GetKeyDown(KeyCode.S))
-                layer.SetTexture(mov);
+                layer.SetTexture(mov, speed, smooth);
         }
     }
 }
