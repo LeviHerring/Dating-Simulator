@@ -22,8 +22,8 @@ public class TextArchitect
     Coroutine buildProcess = null;
 
     private bool isTMPro = false;
-    
-    public TextArchitect(string targetText, string preText = "", int charactersPerFrame = 1, float speed = 1f, bool useEncapsulation = true, bool isTMPro = true )
+
+    public TextArchitect(string targetText, string preText = "", int charactersPerFrame = 1, float speed = 1f, bool useEncapsulation = true, bool isTMPro = true)
     {
         this.targetText = targetText;
         this.preText = preText;
@@ -57,11 +57,11 @@ public class TextArchitect
         string[] speechAndTags = useEncapsulation ? TagManager.SplitByTags(targetText) : new string[1] { targetText };
 
         _currentText = preText;
-        string curText = ""; 
+        string curText = "";
 
         for (int a = 0; a < speechAndTags.Length; a++)
         {
-            string section =  speechAndTags[a];
+            string section = speechAndTags[a];
             bool isATag = (a & 1) != 0;
 
             if (isATag && useEncapsulation)
@@ -105,14 +105,14 @@ public class TextArchitect
                     }
                 }
             }
-                else
-                {
+            else
+            {
                 string tag = string.Format("<{0}>", section);
                 _currentText += tag;
                 yield return new WaitForEndOfFrame();
-                }
+            }
 
-        
+
         }
 
         buildProcess = null;
@@ -130,7 +130,7 @@ public class TextArchitect
         private string _displayText = "";
 
         private string[] allSpeechAndTagsArray;
-        public int speechAndTagsArrayProgress {get { return arrayProgress; } }
+        public int speechAndTagsArrayProgress { get { return arrayProgress; } }
         private int arrayProgress = 0;
 
         public bool isDone { get { return _isDone; } }
@@ -155,22 +155,22 @@ public class TextArchitect
                     targetText = nextPart;
                 else
                 {
-                    subEncapsulator = new ENCAPSULATED_TEXT(string.Format("<{0}>", nextPart ), allSpeechAndTagsArray, arrayProgress + 1 );
+                    subEncapsulator = new ENCAPSULATED_TEXT(string.Format("<{0}>", nextPart), allSpeechAndTagsArray, arrayProgress + 1);
                 }
 
                 this.arrayProgress++;
             }
 
-            
+
 
         }
 
         void GenerateEndingTag()
         {
             endingTag = tag.Replace("<", "").Replace(">", "");
-            if(endingTag.Contains("=") )
+            if (endingTag.Contains("="))
             {
-                endingTag = string.Format("</{0}>", endingTag.Split('=')[0]); 
+                endingTag = string.Format("</{0}>", endingTag.Split('=')[0]);
             }
             else
             {
@@ -190,7 +190,7 @@ public class TextArchitect
             }
             else
             {
-                if(currentText == targetText)
+                if (currentText == targetText)
                 {
                     if (allSpeechAndTagsArray.Length > arrayProgress + 1)
                     {
@@ -260,8 +260,8 @@ public class TextArchitect
             if (encapsulator != null)
                 encapsulator.UpdateArrayProgress(val);
         }
-       
-        void UpdateDisplay(string subValue )
+
+        void UpdateDisplay(string subValue)
         {
             _displayText = string.Format("{0}{1}{2}{3}", tag, currentText, subValue, endingTag);
 

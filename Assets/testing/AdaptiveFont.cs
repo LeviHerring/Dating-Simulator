@@ -5,41 +5,40 @@ using UnityEngine.UI;
 
 public class AdaptiveFont : MonoBehaviour
 {
-    Text txt;
-    public bool continualUpdate = true;
 
-    public int fontSizeAtDefaultResolution = 40;
-    public static float defaultResolution = 2525f;
+	Text txt;
+	public bool continualUpdate = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        txt = GetComponent<Text>();
-        if (continualUpdate)
-        {
-            InvokeRepeating("Adjust", 0f, Random.Range(0.3f, 1f));
-        }
-        else
-        {
-            Adjust();
-            enabled = false;
-        }
-    }
+	public int fontSizeAtDefaultResolution = 40;
+	public static float defaultResolution = 2525f;
 
-    // Update is called once per frame
-    void Update()
-    {
+	// Use this for initialization
+	void Start()
+	{
+		txt = GetComponent<Text>();
 
-    }
+		if (continualUpdate)
+		{
+			InvokeRepeating("Adjust", 0f, Random.Range(0.3f, 1f));
+		}
+		else
+		{
+			Adjust();
+			enabled = false;
+		}
+	}
 
-    void Adjust()
-    {
-        if (!enabled || !gameObject.activeInHierarchy)
-            return;
 
-        float totalCurrentRes = Screen.height + Screen.width;
-        float perc = totalCurrentRes / defaultResolution;
-        int fontsize = Mathf.RoundToInt((float) fontSizeAtDefaultResolution * perc);
-        txt.fontSize = fontsize;
-    }
+	//adjust is repeating so it must be checked for active status before running.
+	void Adjust()
+	{
+		if (!enabled || !gameObject.activeInHierarchy)
+			return;
+
+		float totalCurrentRes = Screen.height + Screen.width;
+		float perc = totalCurrentRes / defaultResolution;
+		int fontsize = Mathf.RoundToInt((float)fontSizeAtDefaultResolution * perc);
+
+		txt.fontSize = fontsize;
+	}
 }

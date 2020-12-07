@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -42,4 +42,4 @@ public class LayerTesting : MonoBehaviour
                 layer.SetTexture(mov, speed, smooth);
         }
     }
-}
+}*/

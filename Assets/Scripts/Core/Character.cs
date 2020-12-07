@@ -17,10 +17,8 @@ public class Character
     {
         if (!enabled)
             enabled = true;
-        if (!add)
-            dialogue.Say(speech, characterName);
-        else
-            dialogue.SayAdd(speech, characterName);
+            dialogue.Say(speech, characterName, add);
+         
     }
 
     public Vector2 anchorPadding { get { return root.anchorMax - root.anchorMin; } }
