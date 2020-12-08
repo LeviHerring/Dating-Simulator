@@ -1,10 +1,10 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class architectTesting : MonoBehaviour
+public class architectTesting2 : MonoBehaviour
 {
 
     public TextMeshProUGUI tmprotext;
@@ -28,4 +28,4 @@ public class architectTesting : MonoBehaviour
             new TextArchitect(tmprotext, say, "", charactersPerFrame, speed);
         }
     }
-}
+}*/

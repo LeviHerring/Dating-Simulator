@@ -7,22 +7,50 @@ using UnityEngine.UI;
 public class Character
 {
     public string characterName;
+
+    /// <summary>
+    /// the actual name that is displayed when this character speaks. By default it is set to the true character name.
+    /// </summary>
+    public string displayName = "";
+
+    /// <summary>
+    /// The root is the container for all images related tot he character in the scene. The root object.
+    /// </summary>
     [HideInInspector] public RectTransform root;
 
-    public bool enabled {get{ return root.gameObject.activeInHierarchy;} set{ root.gameObject.SetActive (value);}}
+    public bool enabled { get { return root.gameObject.activeInHierarchy; } set { root.gameObject.SetActive(value); } }
 
-    DialogueSystem dialogue; 
+    /// <summary>
+    /// The space between the anchors of this character. Defines how much space a character takes up on the canvas.
+    /// </summary>
+    /// <value>The anchor padding.</value>
+    public Vector2 anchorPadding { get { return root.anchorMax - root.anchorMin; } }
 
+    DialogueSystem dialogue;
+
+    /// <summary>
+    /// Make this character say something.
+    /// </summary>
+    /// <param name="speech">Speech.</param>
     public void Say(string speech, bool add = false)
     {
         if (!enabled)
             enabled = true;
-            dialogue.Say(speech, characterName, add);
-         
+
+        if (!isInScene)
+            FadeIn();
+
+        //get the details for the dialogue system related to this character. details are saved on file.
+        CharacterDialogueDetails.CDD c = CharacterDialogueDetails.instance.GetDetailsForCharacter(characterName);
+        Debug.Log(characterName);
+
+        dialogue.Say(speech, displayName, add, c);
     }
 
-    public Vector2 anchorPadding { get { return root.anchorMax - root.anchorMin; } }
-
+    public Vector2 _targetPosition
+    {
+        get { return targetPosition; }
+    }
     Vector2 targetPosition;
     Coroutine moving;
     bool isMoving { get { return moving != null; } }
@@ -34,6 +62,7 @@ public class Character
     /// <param name="smooth">If set to <c>true</c> smooth.</param>
     public void MoveTo(Vector2 Target, float speed, bool smooth = true)
     {
+        Debug.Log("move " + characterName + " to " + Target.ToString());
         //if we are moving, stop moving
         StopMoving();
         //start moving coroutine.
@@ -61,9 +90,12 @@ public class Character
     /// <param name="target">Target.</param>
     public void SetPosition(Vector2 target)
     {
+        targetPosition = target;
+
         Vector2 padding = anchorPadding;
         float maxX = 1f - padding.x;
         float maxY = 1f - padding.y;
+
         Vector2 minAnchorTarget = new Vector2(maxX * targetPosition.x, maxY * targetPosition.y);
 
         root.anchorMin = minAnchorTarget;
@@ -102,34 +134,57 @@ public class Character
         StopMoving();
     }
 
+    //Begin Transitioning Images\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     public Sprite GetSprite(int index = 0)
     {
-        //Sprite sprite = Resources.Load<Sprite> ("Images/Characters/" + characterName);
-        //return sprite
         Sprite[] sprites = Resources.LoadAll<Sprite>("Images/Characters/" + characterName);
         return sprites[index];
     }
 
-    public void SetBody(int index)
-	{
-		renderers.bodyRenderer.sprite = GetSprite (index);
-	}
+    public Sprite GetSprite(string spriteName = "")
+    {
+        Sprite[] sprites = Resources.LoadAll<Sprite>("Images/Characters/" + characterName);
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            if (sprites[i].name == spriteName)
+                return sprites[i];
+        }
+        return sprites.Length > 0 ? sprites[0] : null;
+    }
 
+    public void SetBody(int index)
+    {
+        renderers.bodyRenderer.sprite = GetSprite(index);
+    }
     public void SetBody(Sprite sprite)
     {
         renderers.bodyRenderer.sprite = sprite;
+    }
+    public void SetBody(string spriteName)
+    {
+        if (spriteName == "AlphaOnly")
+            SetBody(Resources.Load<Sprite>("Images/AlphaOnly"));
+        else
+            renderers.bodyRenderer.sprite = GetSprite(spriteName);
     }
 
     public void SetExpression(int index)
     {
         renderers.expressionRenderer.sprite = GetSprite(index);
-
     }
-
     public void SetExpression(Sprite sprite)
     {
         renderers.expressionRenderer.sprite = sprite;
     }
+    public void SetExpression(string spriteName)
+    {
+        if (spriteName == "AlphaOnly")
+            SetExpression(Resources.Load<Sprite>("Images/AlphaOnly"));
+        else
+            renderers.expressionRenderer.sprite = GetSprite(spriteName);
+    }
+
+    //Transition Body
     bool isTransitioningBody { get { return transitioningBody != null; } }
     Coroutine transitioningBody = null;
 
@@ -145,7 +200,6 @@ public class Character
             CharacterManager.instance.StopCoroutine(transitioningBody);
         transitioningBody = null;
     }
-
 
     public IEnumerator TransitioningBody(Sprite sprite, float speed, bool smooth)
     {
@@ -163,28 +217,23 @@ public class Character
         {
             Image image = GameObject.Instantiate(renderers.bodyRenderer.gameObject, renderers.bodyRenderer.transform.parent).GetComponent<Image>();
             renderers.allBodyRenderers.Add(image);
-            renderers.BodyRenderer = image;
+            renderers.bodyRenderer = image;
             image.color = GlobalF.SetAlpha(image.color, 0f);
             image.sprite = sprite;
         }
 
-        while (GlobalF.TransitionImages(ref renderers.bodyRenderer, ref renderers.allBodyRenderers, speed, smooth))
+        while (GlobalF.TransitionImages(ref renderers.bodyRenderer, ref renderers.allBodyRenderers, speed, smooth, true))
             yield return new WaitForEndOfFrame();
 
         StopTransitioningBody();
-
     }
 
-
-
+    //Transition Expression
     bool isTransitioningExpression { get { return transitioningExpression != null; } }
     Coroutine transitioningExpression = null;
 
     public void TransitionExpression(Sprite sprite, float speed, bool smooth)
     {
-        if (renderers.expressionRenderer.sprite == sprite)
-            return;
-
         StopTransitioningExpression();
         transitioningExpression = CharacterManager.instance.StartCoroutine(TransitioningExpression(sprite, speed, smooth));
     }
@@ -217,50 +266,128 @@ public class Character
             image.sprite = sprite;
         }
 
-        while (GlobalF.TransitionImages(ref renderers.expressionRenderer, ref renderers.allExpressionRenderers, speed, smooth))
+        while (GlobalF.TransitionImages(ref renderers.expressionRenderer, ref renderers.allExpressionRenderers, speed, smooth, true))
             yield return new WaitForEndOfFrame();
 
-        Debug.Log("done");
         StopTransitioningExpression();
     }
 
+    //End Transition Images\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    public void Flip()
+    {
+        root.localScale = new Vector3(root.localScale.x * -1, 1, 1);
+    }
 
+    public bool isFacingLeft { get { return root.localScale.x == 1; } }
+    public void FaceLeft()
+    {
+        root.localScale = Vector3.one;
+    }
 
+    public bool isFacingRight { get { return root.localScale.y == -1; } }
+    public void FaceRight()
+    {
+        root.localScale = new Vector3(-1, 1, 1);
+    }
 
+    public void FadeOut(float speed = 3, bool smooth = false)
+    {
+        if (isEnteringOrExitingScene)
+            CharacterManager.instance.StopCoroutine(enteringExiting);
 
+        enteringExiting = CharacterManager.instance.StartCoroutine(ExitingScene(speed, smooth));
+    }
 
+    public bool isInScene = false;
+    Coroutine enteringExiting = null;
+    public bool isEnteringOrExitingScene { get { return enteringExiting != null; } }
 
+    IEnumerator EnteringScene(float speed = 3, bool smooth = false)
+    {
+        isInScene = true;
 
+        while (canvasGroup.alpha < 1)
+        {
+            canvasGroup.alpha = smooth ? Mathf.Lerp(canvasGroup.alpha, 1, speed * Time.deltaTime) : Mathf.MoveTowards(canvasGroup.alpha, 1, speed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
 
+        enteringExiting = null;
+    }
 
-    public Character(string _name, bool enableOnStart = true, bool enableCreatedCharacterOnStart = true)
+    IEnumerator ExitingScene(float speed = 3, bool smooth = false)
+    {
+        isInScene = false;
+
+        while (canvasGroup.alpha > 0)
+        {
+            canvasGroup.alpha = smooth ? Mathf.Lerp(canvasGroup.alpha, 0, speed * Time.deltaTime) : Mathf.MoveTowards(canvasGroup.alpha, 0, speed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+
+        enteringExiting = null;
+
+        //character is completely faded out and exited the scene. Destroy it so it is no longer saved to file until recalled.
+        CharacterManager.instance.DestroyCharacter(this);
+    }
+
+    Sprite lastBodySprite, lastFacialSprite = null;
+    public void FadeIn(float speed = 3, bool smooth = false)
+    {
+        if (isEnteringOrExitingScene)
+            CharacterManager.instance.StopCoroutine(enteringExiting);
+
+        enteringExiting = CharacterManager.instance.StartCoroutine(EnteringScene(speed, smooth));
+    }
+
+    public CanvasGroup canvasGroup;
+
+    /// <summary>
+    /// Create a new character.
+    /// </summary>
+    /// <param name="_name">Name.</param>
+    public Character(string _name, bool enableOnStart = true)
     {
         CharacterManager cm = CharacterManager.instance;
+        //locate the character prefab.
         GameObject prefab = Resources.Load("Characters/Character[" + _name + "]") as GameObject;
+        //spawn an instance of the prefab directly on the character panel.
         GameObject ob = GameObject.Instantiate(prefab, cm.characterPanel);
 
         root = ob.GetComponent<RectTransform>();
-        characterName = _name;
+        canvasGroup = ob.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 0;
 
+        characterName = _name;
+        displayName = characterName;
+
+        //get the renderer(s)
         renderers.bodyRenderer = ob.transform.Find("BodyLayer").GetComponentInChildren<Image>();
         renderers.expressionRenderer = ob.transform.Find("ExpressionLayer").GetComponentInChildren<Image>();
         renderers.allBodyRenderers.Add(renderers.bodyRenderer);
         renderers.allExpressionRenderers.Add(renderers.expressionRenderer);
 
-
         dialogue = DialogueSystem.instance;
-        enabled = enableOnStart; 
+
+        enabled = enableOnStart;
     }
-    
 
     [System.Serializable]
     public class Renderers
     {
+        //sprites use images.
+        /// <summary>
+        /// The body renderer for a multi layer character.
+        /// </summary>
         public Image bodyRenderer;
+        /// <summary>
+        /// The expression renderer for a multi layer character.
+        /// </summary>
         public Image expressionRenderer;
 
         public List<Image> allBodyRenderers = new List<Image>();
         public List<Image> allExpressionRenderers = new List<Image>();
     }
+
     public Renderers renderers = new Renderers();
 }

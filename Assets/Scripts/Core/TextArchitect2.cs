@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -153,4 +153,4 @@ public class TextArchitect2
 		if (tmpro == DialogueSystem.instance.speechText)
 			DialogueSystem.instance.targetSpeech = text;
 	}
-}
+}*/

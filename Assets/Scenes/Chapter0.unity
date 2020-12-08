@@ -1250,6 +1250,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1327109594}
+  - component: {fileID: 1327109597}
+  - component: {fileID: 1327109596}
+  - component: {fileID: 1327109595}
   m_Layer: 0
   m_Name: Core
   m_TagString: Untagged
@@ -1271,6 +1274,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1327109595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327109593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7513571d7bb31444ea6e65dfb4ac3f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterPanel: {fileID: 1562090837}
+  characters: []
+--- !u!114 &1327109596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327109593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a23ea27b43f0d1241ba41d01b239451d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elements:
+    speechPanel: {fileID: 511408138}
+    speakerNamePane: {fileID: 814428455}
+    speakerNameText: {fileID: 625712819}
+    speechText: {fileID: 825790894}
+  isWaitingForUserInput: 0
+  targetSpeech: 
+  SpeechPanelRequirements: []
+  speechBox: {fileID: 195391976}
+--- !u!114 &1327109597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327109593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3083f3519cd7c4188775f5bb0e90ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1355448501
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,6 +1620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7513571d7bb31444ea6e65dfb4ac3f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterPanel: {fileID: 0}
+  characters: []
 --- !u!1 &1892676733
 GameObject:
   m_ObjectHideFlags: 0

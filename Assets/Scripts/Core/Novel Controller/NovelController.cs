@@ -35,7 +35,7 @@ public class NovelController : MonoBehaviour
         {
             HandleDialogue(dialogueAndActions[0], dialogueAndActions[1]);
             HandleEventsFromLine(dialogueAndActions[2]);
-                
+
         }
         else
         {
@@ -55,9 +55,9 @@ public class NovelController : MonoBehaviour
 
         if (dialogueDetails.Length > 0)
         {
-            if(dialogueDetails[dialogueDetails.Length-1] == ' ')
+            if (dialogueDetails[dialogueDetails.Length - 1] == ' ')
                 dialogueDetails = dialogueDetails.Remove(dialogueDetails.Length - 1);
-             
+
             speaker = dialogueDetails;
             cachedLastSpeaker = speaker;
         }
@@ -72,14 +72,14 @@ public class NovelController : MonoBehaviour
             DialogueSystem.instance.Say(dialogue, speaker, additive);
         }
     }
-     
-       void HandleEventsFromLine(string events)
+
+    void HandleEventsFromLine(string events)
     {
-        
-        string actions = events.Split(' ');
+        print("Handle events [" + events + "]");
+        string[] actions = events.Split(' ');
 
 
-        foreach(string action in actions)
+        foreach (string action in actions)
         {
             HandleAction(action);
         }
@@ -89,12 +89,84 @@ public class NovelController : MonoBehaviour
     {
         print("Handle action [" + action + "]");
         string[] data = action.Split('(', ')');
+
         if (data[0] == "setBackground")
         {
-             
+            Command_SetLayerImage(data[1], BCFC.instance.background);
+            return;
+        }
+        //if (data[0] == "setCinematic")
+        //{
+        //Command_SetLayerImage(data[1], BCFC.instance.cinematic);
+        //return;
+        //}
+        if (data[0] == "setForeground")
+        {
+            Command_SetLayerImage(data[1], BCFC.instance.foreground);
+            return;
+        }
+        if (data[0] == "PlaySound")
+        {
+            Command_PlaySound(data[1]);
+            return;
+        }
+        if (data[0] == "PlayMusic")
+        {
+            Command_PlayMusic(data[1]);
+            return;
         }
     }
 
     void Command_SetLayerImage(string data, BCFC.LAYER layer)
-      
+    {
+        string texName = data.Contains(",") ? data.Split(',')[0] : data;
+        Texture2D tex = Resources.Load("Images/UI/backdrops/" + texName) as Texture2D;
+        float spd = 2f;
+        bool smooth = false;
+
+        if (data.Contains(","))
+        {
+            string[] parameters = data.Split(',');
+            foreach (string p in parameters)
+            {
+                float fVal = 0;
+                bool bVal = false;
+                if (float.TryParse(p, out fVal))
+                {
+                    spd = fVal; continue;
+                }
+                if (bool.TryParse(p, out bVal))
+                {
+                    smooth = bVal; continue;
+                }
+            }
+
+        }
+
+        layer.TransitionToTexture(tex, spd, smooth);
+
+    }
+
+    void Command_PlaySound(string data)
+    {
+        AudioClip clip = Resources.Load("Audio/SFX/" + data ) as AudioClip;
+
+        if (clip != null)
+            AudioManager.instance.PlaySFX(clip);
+        else
+            Debug.LogError("Clip does not exist - " + data);
+    }
+
+    void Command_PlayMusic(string data)
+    {
+        AudioClip clip = Resources.Load("Audio/Music/" + data ) as AudioClip;
+
+        if (clip != null)
+            AudioManager.instance.PlaySFX(clip);
+        else
+            Debug.LogError("Clip does not exist - " + data);
+    }
 }
+
+
+

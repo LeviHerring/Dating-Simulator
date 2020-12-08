@@ -4,38 +4,27 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+public class architectTesting : MonoBehaviour {
 
-public class ArchitectTesting : MonoBehaviour
-{
+	public TextMeshProUGUI tmprotext;
 
-    public Text text;
-    public TextMeshProUGUI tmprotext;
-    TextArchitect architect;
+	[TextArea(5,10)]
+	public string say;
+	public int charactersPerFrame = 1;
+	public float speed = 1f;
 
-    [TextArea(5, 10)]
-    public string say;
-    public int charactersPerFrame = 1;
-    public float speed = 1f;
-    public bool useEncap = true;
-    public bool useTMPro = true;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        architect = new TextArchitect(say, "", charactersPerFrame, speed, useEncap, useTMPro);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            architect = new TextArchitect(say, "", charactersPerFrame, speed, useEncap, useTMPro);
-        }
-        if (useTMPro)
-            tmprotext.text = architect.currentText;
-        else
-
-            text.text = architect.currentText;
-    }
+	// Use this for initialization
+	void Start () 
+	{
+		new TextArchitect(tmprotext, say, "", charactersPerFrame, speed);	
+	}
+	
+	// Update is called once per frame
+	void Update () 
+	{
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			new TextArchitect(tmprotext, say, "", charactersPerFrame, speed);
+		}
+	}
 }
