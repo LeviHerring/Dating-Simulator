@@ -47,10 +47,10 @@ public class CharacterDialogueDetails : MonoBehaviour
                     case "name color":
                         cd.nameColor = string.Format("<color={0}>", value);
                         break;
-                    case "dialogue font":
+                    // case "dialogue font":
                         cd.speechFont = Resources.Load<TMP_FontAsset>("Fonts & Materials/" + value);
                         if (cd.speechFont == null)
-                            cd.speechFont = TMP_FontAsset.defaultFontAsset;
+                            //cd.speechFont = TMP_FontAsset.defaultFontAsset;
                         break;
                 }
             }
@@ -114,7 +114,7 @@ public class CharacterDialogueDetails : MonoBehaviour
             }
 
             if (speechFont == null) { }
-                speechFont = TMP_FontAsset.defaultFontAsset;
+               // speechFont = TMP_FontAsset.defaultFontAsset;
         }
     }
 }

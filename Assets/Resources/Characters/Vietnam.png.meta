@@ -1,139 +1,211 @@
 fileFormatVersion: 2
-guid: e37ca5178898eac41803389270a69f09
+guid: 395376d8eb87b9345a5b49da3a883f66
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5520217733538639933
-    second: Raelin (1)_0
+      213: 2298962328700038366
+    second: Raelin_0
   - first:
-      213: -2947336091272343885
-    second: Raelin (1)_1
+      213: -1467321966688172290
+    second: Raelin_1
   - first:
-      213: -8205535945135773833
-    second: Raelin (1)_2
+      213: 5854940951441800653
+    second: Raelin_2
   - first:
-      213: -635643063637080883
-    second: Raelin (1)_3
+      213: 8524089189560671182
+    second: Raelin_3
   - first:
-      213: -2447513882008901360
-    second: Raelin (1)_4
+      213: -1605056917830350461
+    second: Raelin_4
   - first:
-      213: 8766649622235234254
-    second: Raelin (1)_5
+      213: 3582760157343570481
+    second: Raelin_5
   - first:
-      213: -397840188021654031
-    second: Raelin (1)_6
+      213: 4593536753222135535
+    second: Raelin_6
   - first:
-      213: -5380370210159619840
-    second: Raelin (1)_7
+      213: -8276903053682564635
+    second: Raelin_7
   - first:
-      213: -9137163873606078077
-    second: Raelin (1)_8
+      213: -3561565260002867844
+    second: Raelin_8
   - first:
-      213: -1795806233671417576
-    second: Raelin (1)_9
+      213: 2135081394792550294
+    second: Raelin_9
   - first:
-      213: -5416183441563581624
-    second: Raelin (1)_10
+      213: -3184767558895917338
+    second: Raelin_10
   - first:
-      213: -669766351864446719
-    second: Raelin (1)_11
+      213: -6681296215893579788
+    second: Raelin_11
   - first:
-      213: 4829119945600777635
-    second: Raelin (1)_12
+      213: 1364032900317272315
+    second: Raelin_12
   - first:
-      213: -1426234573602537439
-    second: Raelin (1)_13
+      213: -8213521431899131339
+    second: Raelin_13
   - first:
-      213: -5993639915401755397
-    second: Raelin (1)_14
+      213: -2550532747958100976
+    second: Raelin_14
   - first:
-      213: 2105440749450447872
-    second: Raelin (1)_15
+      213: 2272910980159836624
+    second: Raelin_15
   - first:
-      213: 1939551034409324918
-    second: Raelin (1)_16
+      213: 2515271000809045731
+    second: Raelin_16
   - first:
-      213: 7468062210461208826
-    second: Raelin (1)_17
+      213: -8556285427601625437
+    second: Raelin_17
   - first:
-      213: -6944228686276424760
-    second: Raelin (1)_18
+      213: 274134901011692048
+    second: Raelin_18
   - first:
-      213: -3942485716806496343
-    second: Raelin (1)_19
+      213: 3560093205803665535
+    second: Raelin_19
   - first:
-      213: 751941008368622451
-    second: Raelin (1)_20
+      213: 3059541386638149779
+    second: Raelin_20
   - first:
-      213: 2054780693244637369
-    second: Raelin (1)_21
+      213: -5214573346604877
+    second: Raelin_21
   - first:
-      213: -5140847116205034359
-    second: Raelin (1)_0
+      213: -4831361605290477315
+    second: NeutralStance
   - first:
-      213: -8259148724945109098
-    second: Raelin (1)_1
+      213: -4645301486871573669
+    second: TrueNeutral
   - first:
-      213: -4733284607497661281
-    second: Raelin (1)_2
+      213: 4566280629083764571
+    second: Vietnam_2
   - first:
-      213: -2516702649668397105
-    second: Raelin (1)_3
+      213: -7003701936515324789
+    second: Vietnam_3
   - first:
-      213: 5648397065891717793
-    second: Raelin (1)_4
+      213: -4807080976683187783
+    second: Angry
   - first:
-      213: 4062300669410173711
-    second: Raelin (1)_5
+      213: -3985000144482026833
+    second: Vietnam_5
   - first:
-      213: 1400707800568498003
-    second: Raelin (1)_6
+      213: -1030036234354187309
+    second: PensiveBlush
   - first:
-      213: -3280665792470957861
-    second: Raelin (1)_7
+      213: -7958256265140177350
+    second: Vietnam_7
   - first:
-      213: 942468208037615626
-    second: Raelin (1)_8
+      213: -3988100326071187361
+    second: HappySurprised
   - first:
-      213: 5150641469188941696
-    second: Raelin (1)_9
+      213: 1093247673105593397
+    second: Vietnam_9
   - first:
-      213: -6982108485404672635
-    second: Raelin (1)_10
+      213: -3859980888967718164
+    second: Pensive
   - first:
-      213: -8652584530887345821
-    second: Raelin (1)_11
+      213: -7137541900215399590
+    second: Vietnam_11
   - first:
-      213: 5766234761334133878
-    second: Raelin (1)_12
+      213: -3024453378114755231
+    second: Laughing
   - first:
-      213: -1487869598316207209
-    second: Raelin (1)_13
+      213: -3363635186648064835
+    second: Vietnam_13
   - first:
-      213: -4677714528896682851
-    second: Raelin (1)_14
+      213: -2442987822643073326
+    second: Blank
   - first:
-      213: -347619907485061078
-    second: Raelin (1)_15
+      213: -3085205641549043122
+    second: Vietnam_15
   - first:
-      213: -3976641544307319357
-    second: Raelin (1)_16
+      213: -1041966409801098382
+    second: Flushed
   - first:
-      213: 1796114062744465070
-    second: Raelin (1)_17
+      213: 5707782942078741020
+    second: Vietnam_17
   - first:
-      213: 4166603693543819917
-    second: Raelin (1)_18
+      213: -5725177572061895854
+    second: Surprise
   - first:
-      213: -2598334016879582965
-    second: Raelin (1)_19
+      213: -8913884772936151043
+    second: Vietnam_19
   - first:
-      213: 1570017137530246614
-    second: Raelin (1)_20
+      213: -7234406826943670732
+    second: Kyaa
   - first:
-      213: 3521822179402148655
-    second: Raelin (1)_21
+      213: -1573188676995320137
+    second: ExcitedBlush
+  - first:
+      213: -1747507725943740720
+    second: NeutralStance
+  - first:
+      213: -2361017483645119379
+    second: TrueNeutral
+  - first:
+      213: 6823066436050267430
+    second: Vietnam_2
+  - first:
+      213: 8460498659187789094
+    second: Vietnam_3
+  - first:
+      213: -8732791109281285748
+    second: Angry
+  - first:
+      213: 3489275888334463535
+    second: Vietnam_5
+  - first:
+      213: 4925517508483848547
+    second: PensiveBlush
+  - first:
+      213: 1082039247015310284
+    second: Vietnam_7
+  - first:
+      213: -9169262853277595250
+    second: HappySurprised
+  - first:
+      213: -1679561900193759963
+    second: Vietnam_9
+  - first:
+      213: -5424782125316586020
+    second: Pensive
+  - first:
+      213: -507180656697142117
+    second: Vietnam_11
+  - first:
+      213: -2760779699398420833
+    second: Laughing
+  - first:
+      213: 3393022707361297200
+    second: Vietnam_13
+  - first:
+      213: -2285864296891055951
+    second: Blank
+  - first:
+      213: 7322166151829540151
+    second: Vietnam_15
+  - first:
+      213: -2654955737071263536
+    second: Flushed
+  - first:
+      213: 8801400778976060049
+    second: Vietnam_17
+  - first:
+      213: 2972106071779480924
+    second: Surprise
+  - first:
+      213: -7138626524602425318
+    second: Vietnam_19
+  - first:
+      213: -4444454104707302727
+    second: Kyaa
+  - first:
+      213: 4811815626669137787
+    second: ExcitedBlush
+  - first:
+      213: -1747507725943740720
+    second: Excited
+  - first:
+      213: -8732791109281285748
+    second: Neutral
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -228,54 +300,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: tvOS
-    maxTextureSize: 8192
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 8192
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Lumin
-    maxTextureSize: 8192
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 8192
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 8192
     resizeAlgorithm: 0
@@ -291,13 +315,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Raelin (1)_0
+      name: TrueNeutral
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 7968
+        width: 464
+        height: 698
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6498da9b1bfb3fd0800000000000000
+      internalID: -2361017483645119379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vietnam_2
       rect:
         serializedVersion: 2
         x: 4
-        y: 7957
-        width: 478
-        height: 718
+        y: 7235
+        width: 477
+        height: 716
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,56 +350,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 984f10209ca08a8b0800000000000000
-      internalID: -5140847116205034359
+      spriteID: 62daaaff5c660be50800000000000000
+      internalID: 6823066436050267430
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_1
-      rect:
-        serializedVersion: 2
-        x: 487
-        y: 7957
-        width: 478
-        height: 718
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 69fb6865efb916d80800000000000000
-      internalID: -8259148724945109098
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Raelin (1)_2
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 7233
-        width: 478
-        height: 718
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f94174d3abeff4eb0800000000000000
-      internalID: -4733284607497661281
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Raelin (1)_3
+      name: Vietnam_3
       rect:
         serializedVersion: 2
         x: 487
@@ -368,17 +371,38 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc71b313640e21dd0800000000000000
-      internalID: -2516702649668397105
+      spriteID: 62d8e8374bab96570800000000000000
+      internalID: 8460498659187789094
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_4
+      name: Neutral
       rect:
         serializedVersion: 2
-        x: 4
+        x: 7
+        y: 7963
+        width: 470
+        height: 706
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c89799121c4eec680800000000000000
+      internalID: -8732791109281285748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vietnam_5
+      rect:
+        serializedVersion: 2
+        x: 487
         y: 6509
         width: 478
         height: 718
@@ -389,20 +413,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a2a5d67433236e40800000000000000
-      internalID: 5648397065891717793
+      spriteID: f22e287fee56c6030800000000000000
+      internalID: 3489275888334463535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_5
+      name: PensiveBlush
       rect:
         serializedVersion: 2
-        x: 487
-        y: 6509
-        width: 478
-        height: 718
+        x: 2
+        y: 5795
+        width: 479
+        height: 707
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -410,35 +434,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0366039fe0306830800000000000000
-      internalID: 4062300669410173711
+      spriteID: 3699524d314fa5440800000000000000
+      internalID: 4925517508483848547
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_6
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 5785
-        width: 478
-        height: 718
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3570107c250507310800000000000000
-      internalID: 1400707800568498003
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Raelin (1)_7
+      name: Vietnam_7
       rect:
         serializedVersion: 2
         x: 487
@@ -452,20 +455,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd04efce7dbb872d0800000000000000
-      internalID: -3280665792470957861
+      spriteID: cc3f06756fc240f00800000000000000
+      internalID: 1082039247015310284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_8
+      name: HappySurprised
       rect:
         serializedVersion: 2
         x: 4
-        y: 5061
-        width: 478
-        height: 718
+        y: 5070
+        width: 474
+        height: 709
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -473,14 +476,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a085e2087d1541d00800000000000000
-      internalID: 942468208037615626
+      spriteID: e89443a040c30c080800000000000000
+      internalID: -9169262853277595250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_9
+      name: Vietnam_9
       rect:
         serializedVersion: 2
         x: 487
@@ -494,20 +497,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08727608021ca7740800000000000000
-      internalID: 5150641469188941696
+      spriteID: 52dbba8b95ff0b8e0800000000000000
+      internalID: -1679561900193759963
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_10
+      name: Pensive
       rect:
         serializedVersion: 2
         x: 4
-        y: 4337
-        width: 478
-        height: 718
+        y: 4345
+        width: 475
+        height: 710
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -515,14 +518,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58db63843519a1f90800000000000000
-      internalID: -6982108485404672635
+      spriteID: cd5cd94166d47b4b0800000000000000
+      internalID: -5424782125316586020
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_11
+      name: Vietnam_11
       rect:
         serializedVersion: 2
         x: 487
@@ -536,20 +539,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3697b676638dbe780800000000000000
-      internalID: -8652584530887345821
+      spriteID: b941e9041e126f8f0800000000000000
+      internalID: -507180656697142117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_12
+      name: Laughing
       rect:
         serializedVersion: 2
         x: 4
-        y: 3613
-        width: 478
-        height: 718
+        y: 3624
+        width: 475
+        height: 707
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -557,14 +560,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67494d0f6f7c50050800000000000000
-      internalID: 5766234761334133878
+      spriteID: f965f3a9d7dbfa9d0800000000000000
+      internalID: -2760779699398420833
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_13
+      name: Vietnam_13
       rect:
         serializedVersion: 2
         x: 487
@@ -578,20 +581,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7936240cb760a5be0800000000000000
-      internalID: -1487869598316207209
+      spriteID: 033ba13ec20761f20800000000000000
+      internalID: 3393022707361297200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_14
+      name: Blank
       rect:
         serializedVersion: 2
         x: 4
-        y: 2889
-        width: 478
-        height: 718
+        y: 2899
+        width: 474
+        height: 708
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -599,14 +602,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d94fd686b6b651fb0800000000000000
-      internalID: -4677714528896682851
+      spriteID: 1b08f03788af640e0800000000000000
+      internalID: -2285864296891055951
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_15
+      name: Vietnam_15
       rect:
         serializedVersion: 2
         x: 487
@@ -620,20 +623,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a20bf7139810d2bf0800000000000000
-      internalID: -347619907485061078
+      spriteID: 73d4032125f8d9560800000000000000
+      internalID: 7322166151829540151
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_16
+      name: Flushed
       rect:
         serializedVersion: 2
         x: 4
-        y: 2165
-        width: 478
-        height: 718
+        y: 2176
+        width: 476
+        height: 707
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -641,14 +644,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cd5088a59120d8c0800000000000000
-      internalID: -3976641544307319357
+      spriteID: 0d06b7dd2d3b72bd0800000000000000
+      internalID: -2654955737071263536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_17
+      name: Vietnam_17
       rect:
         serializedVersion: 2
         x: 487
@@ -662,20 +665,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eaea7fd49341de810800000000000000
-      internalID: 1796114062744465070
+      spriteID: 192e6bc606bd42a70800000000000000
+      internalID: 8801400778976060049
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_18
+      name: Surprise
       rect:
         serializedVersion: 2
         x: 4
-        y: 1441
+        y: 1452
         width: 478
-        height: 718
+        height: 707
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -683,14 +686,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8a8281dbffb2d930800000000000000
-      internalID: 4166603693543819917
+      spriteID: c559233b9ba0f3920800000000000000
+      internalID: 2972106071779480924
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_19
+      name: Vietnam_19
       rect:
         serializedVersion: 2
         x: 487
@@ -704,41 +707,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b01241c6afcd0fbd0800000000000000
-      internalID: -2598334016879582965
+      spriteID: a1024e87ff08eec90800000000000000
+      internalID: -7138626524602425318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_20
+      name: Kyaa
       rect:
         serializedVersion: 2
         x: 4
-        y: 717
-        width: 478
-        height: 718
+        y: 728
+        width: 473
+        height: 707
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 5, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d514cda442d9c510800000000000000
-      internalID: 1570017137530246614
+      spriteID: 9baf46c1a802252c0800000000000000
+      internalID: -4444454104707302727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raelin (1)_21
+      name: ExcitedBlush
       rect:
         serializedVersion: 2
-        x: 487
-        y: 717
-        width: 478
-        height: 718
+        x: 489
+        y: 728
+        width: 475
+        height: 707
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -746,8 +749,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2b6b5ddc9600e030800000000000000
-      internalID: 3521822179402148655
+      spriteID: b7f994081d007c240800000000000000
+      internalID: 4811815626669137787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vietnam_0
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 8
+        width: 463
+        height: 694
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d66fd06bfa9fb7e0800000000000000
+      internalID: -1747507725943740720
       vertices: []
       indices: 
       edges: []

@@ -4,23 +4,24 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class architectTesting : MonoBehaviour {
+public class ArchitectTesting : MonoBehaviour
+{
 
 	public TextMeshProUGUI tmprotext;
 
-	[TextArea(5,10)]
+	[TextArea(5, 10)]
 	public string say;
 	public int charactersPerFrame = 1;
 	public float speed = 1f;
 
 	// Use this for initialization
-	void Start () 
+	void Start()
 	{
-		new TextArchitect(tmprotext, say, "", charactersPerFrame, speed);	
+		new TextArchitect(tmprotext, say, "", charactersPerFrame, speed);
 	}
-	
+
 	// Update is called once per frame
-	void Update () 
+	void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
