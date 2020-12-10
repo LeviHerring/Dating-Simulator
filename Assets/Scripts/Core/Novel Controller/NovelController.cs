@@ -31,12 +31,16 @@ public class NovelController : MonoBehaviour
 
     public void LoadChapterFile(string fileName)
     {
-        data = FileManager.LoadFile(FileManager.savPath + "Resources/Story/" + fileName);
+
+        data = FileManager.ReadTextAsset(Resources.Load<TextAsset>($"Story/{fileName}"));
         cachedLastSpeaker = "";
 
         if (handlingChapterFile != null)
             StopCoroutine(handlingChapterFile);
         handlingChapterFile = StartCoroutine(HandlingChapterFile());
+
+        //auto start the chapter.
+        Next();
     }
 
     bool _next = false;
@@ -46,21 +50,34 @@ public class NovelController : MonoBehaviour
     }
 
     public bool isHandlingChapterFile { get { return handlingChapterFile != null; } }
+    [HideInInspector] public int chapterProgress = 0;
     Coroutine handlingChapterFile = null;
     IEnumerator HandlingChapterFile()
     {
-        int progress = 0;
+        chapterProgress = 0;
 
-        while(progress < data.Count)
+        while (chapterProgress < data.Count)
         {
             if (_next)
             {
-                HandleLine(data[progress]);
-                progress++;
-                while(isHandlingLine)
+                string line = data[chapterProgress];
+
+                if (line.StartsWith("choice"))
                 {
-                    yield return new WaitForEndOfFrame();
+                    yield return HandlingChoiceLine(line);
+                    chapterProgress++;
                 }
+                else
+                {
+                    HandleLine(line);
+                    progress++;
+                    while (isHandlingLine)
+                    {
+                        yield return new WaitForEndOfFrame();
+                    }
+                }
+
+                
             }
             yield return new WaitForEndOfFrame();
         }
@@ -68,7 +85,58 @@ public class NovelController : MonoBehaviour
         handlingChapterFile = null;
     }
 
-    void HandleLine(string rawLine)
+    IEnumerator HandlingChoiceLine(string line)
+    {
+        string title = line.Split('"')[1];
+        List<string> choices = new List<string>();
+        List<string> actions = new List<string>();
+
+        bool gatheringChoices = true;
+        while (gatheringChoices)
+        {
+            chapterProgress++;
+            line = data[chapterProgress];
+
+            if (line == "{")
+                continue;
+
+            line = line.Replace("    ", "");//remove the tabs that have become quad spaces.
+
+            if (line != "}")
+            {
+                choices.Add(line.Split('"')[1]);
+                actions.Add(data[chapterProgress + 1].Replace("    ", ""));
+                chapterProgress++;
+            }
+            else
+            {
+                gatheringChoices = false;
+            }
+
+        }
+
+        if (choices.Count > 0)
+        {
+            ChoiceScreen.Show(title, choices.ToArray()); yield return new WaitForEndOfFrame();
+            while (ChoiceScreen.isWaitingForChoiceToBeMade)
+                yield return new WaitForEndOfFrame();
+
+            //choice is made. execute the paired action.
+            string action = actions[ChoiceScreen.lastChoiceMade.index];
+            HandleLine(action);
+
+            while (isHandlingLine)
+                yield return new WaitForEndOfFrame();
+        }
+        else
+        {
+            Debug.LogError("Invalid choice operation. No choices were found.");
+        }
+
+        
+    }
+
+        void HandleLine(string rawLine)
     {
         CLM.LINE line = CLM.Interpret(rawLine);
 
@@ -244,18 +312,29 @@ public class NovelController : MonoBehaviour
                 Command_ShowScene(data[1]);
                 break;
 
+            case "Load":
+                Command_Load(data[1]);
+                break;
+
+
+
         }
 
-        void Command_SetLayerImage(string data, BCFC.LAYER layer)
+        void Command_Load(string chapterName)
         {
-            string texName = data.Contains(",") ? data.Split(',')[0] : data;
+            NovelController.instance.LoadChapterFile(chapterName);
+        }
+
+        void Command_SetLayerImage(string layerData, BCFC.LAYER layer)
+        {
+            string texName = layerData.Contains(",") ? layerData.Split(',')[0] : layerData;
             Texture2D tex = texName == "null" ? null : Resources.Load("Images/UI/backdrops/" + texName) as Texture2D;
             float spd = 2f;
             bool smooth = false;
 
-            if (data.Contains(","))
+            if (layerData.Contains(","))
             {
-                string[] parameters = data.Split(',');
+                string[] parameters = layerData.Split(',');
                 foreach (string p in parameters)
                 {
                     float fVal = 0;
@@ -276,29 +355,29 @@ public class NovelController : MonoBehaviour
 
         }
 
-        void Command_PlaySound(string data)
+        void Command_PlaySound(string soundData)
         {
-            AudioClip clip = Resources.Load("Audio/SFX/" + data) as AudioClip;
+            AudioClip clip = Resources.Load("Audio/SFX/" + soundData) as AudioClip;
 
             if (clip != null)
                 AudioManager.instance.PlaySFX(clip);
             else
-                Debug.LogError("Clip does not exist - " + data);
+                Debug.LogError("Clip does not exist - " + soundData);
         }
 
-        void Command_PlayMusic(string data)
+        void Command_PlayMusic(string musicData)
         {
-            AudioClip clip = Resources.Load("Audio/Music/" + data) as AudioClip;
+            AudioClip clip = Resources.Load("Audio/Music/" + musicData) as AudioClip;
 
             if (clip != null)
                 AudioManager.instance.PlaySFX(clip);
             else
-                Debug.LogError("Clip does not exist - " + data);
+                Debug.LogError("Clip does not exist - " + musicData);
         }
 
-        void Command_MoveCharacter(string data)
+        void Command_MoveCharacter(string moveData)
         {
-            string[] parameters = data.Split(',');
+            string[] parameters = moveData.Split(',');
             string character = parameters[0];
             float locationX = float.Parse(parameters[1]);
             float locationY = parameters.Length >= 3 ? float.Parse(parameters[2]) : 0;
@@ -308,9 +387,9 @@ public class NovelController : MonoBehaviour
             Character c = CharacterManager.instance.GetCharacter(character);
             c.MoveTo(new Vector2(locationX, locationY), speed, smooth);
         }
-        void Command_SetPosition(string data)
+        void Command_SetPosition(string positionData)
         {
-            string[] parameters = data.Split(',');
+            string[] parameters = positionData.Split(',');
             string character = parameters[0];
             float locationX = float.Parse(parameters[1]);
             float locationY = float.Parse(parameters[2]);
@@ -318,9 +397,9 @@ public class NovelController : MonoBehaviour
             Character c = CharacterManager.instance.GetCharacter(character);
             c.SetPosition(new Vector2(locationX, locationY));
         }
-        void Command_SetFace(string data)
+        void Command_SetFace(string faceData)
         {
-            string[] parameters = data.Split(',');
+            string[] parameters = faceData.Split(',');
             string character = parameters[0];
             string expression = parameters[1];
             float speed = parameters.Length == 3 ? float.Parse(parameters[2]) : 3f;
@@ -331,9 +410,9 @@ public class NovelController : MonoBehaviour
             c.TransitionExpression(sprite, speed, false);
         }
 
-        void Command_SetBody(string data)
+        void Command_SetBody(string bodyData)
         {
-            string[] parameters = data.Split(',');
+            string[] parameters = bodyData.Split(',');
             string character = parameters[0];
             string expression = parameters[1];
             float speed = parameters.Length == 3 ? float.Parse(parameters[2]) : 3f;
@@ -344,9 +423,9 @@ public class NovelController : MonoBehaviour
             c.TransitionBody(sprite, speed, false);
         }
 
-        void Command_Flip(string data)
+        void Command_Flip(string flipData)
         {
-            string[] characters = data.Split(';');
+            string[] characters = flipData.Split(';');
 
             foreach (string s in characters)
             {
@@ -355,9 +434,9 @@ public class NovelController : MonoBehaviour
             }
         }
 
-        void Command_FaceLeft(string data)
+        void Command_FaceLeft(string faceLeftData)
         {
-            string[] characters = data.Split(';');
+            string[] characters = faceLeftData.Split(';');
 
             foreach (string s in characters)
             {
@@ -366,9 +445,9 @@ public class NovelController : MonoBehaviour
             }
         }
 
-        void Command_FaceRight(string data)
+        void Command_FaceRight(string faceRightData)
         {
-            string[] characters = data.Split(';');
+            string[] characters = faceRightData.Split(';');
 
             foreach (string s in characters)
             {
@@ -377,9 +456,9 @@ public class NovelController : MonoBehaviour
             }
         }
 
-        void Command_Exit(string data)
+        void Command_Exit(string exitData)
         {
-            string[] parameters = data.Split(',');
+            string[] parameters = exitData.Split(',');
             string[] characters = parameters[0].Split(';');
             float speed = 3;
             bool smooth = false;
@@ -398,9 +477,9 @@ public class NovelController : MonoBehaviour
                 c.FadeOut(speed, smooth);
             }
         }
-        void Command_Enter(string data)
+        void Command_Enter(string enterData)
         {
-            string[] parameters = data.Split(',');
+            string[] parameters = enterData.Split(',');
             string[] characters = parameters[0].Split(';');
             float speed = 3;
             bool smooth = false;
@@ -420,9 +499,9 @@ public class NovelController : MonoBehaviour
                 c.FadeIn(speed, smooth);
             }
         }
-        void Command_TransLayer(BCFC.LAYER layer, string data)
+        void Command_TransLayer(BCFC.LAYER layer, string transLayerData)
         {
-            string[] parameters = data.Split(',');
+            string[] parameters = transLayerData.Split(',');
 
             string texName = parameters[0];
             string transTexName = parameters[1];
@@ -446,9 +525,9 @@ public class NovelController : MonoBehaviour
             TransitionMaster.TransitionLayer(layer, tex, transTex, spd, smooth);
         }
         
-        void Command_ShowScene(string data)
+        void Command_ShowScene(string showSceneData)
         {
-            string[] parameters = data.Split(',');
+            string[] parameters = showSceneData.Split(',');
             bool show = bool.Parse(parameters[0]);
             string texName = parameters[1];
             Texture2D transTex = Resources.Load("Images/TransitionEffects/" + texName) as Texture2D;

@@ -6,7 +6,7 @@ using TMPro;
 public class CharacterDialogueDetails : MonoBehaviour
 {
     public static CharacterDialogueDetails instance;
-    public static string dataFile = "Characters/CharacterDialogueDetails";
+    public static string dataFile = "CharacterDialogueDetails";
 
     public Dictionary<string, CDD> characterVariables = new Dictionary<string, CDD>();
     public Dictionary<string, string> characterNicknameDictionary = new Dictionary<string, string>();
@@ -21,7 +21,8 @@ public class CharacterDialogueDetails : MonoBehaviour
     // Start is called before the first frame update
     public void Reload()
     {
-        List<string> data = FileManager.ReadTextAsset(Resources.Load<TextAsset>(dataFile));
+        TextAsset loadedTextAsset = Resources.Load<TextAsset>(dataFile);
+        List<string> data = FileManager.ReadTextAsset(loadedTextAsset);
 
         for (int i = 1; i < data.Count; i++)
         {
@@ -33,7 +34,7 @@ public class CharacterDialogueDetails : MonoBehaviour
             for (int a = 0; a < parts.Length; a++)
             {
                 string[] titleAndValue = parts[a].Split('=');
-                string title = titleAndValue[0];
+                string title = titleAndValue[0]; 
                 string value = titleAndValue[1];
 
                 switch (title)

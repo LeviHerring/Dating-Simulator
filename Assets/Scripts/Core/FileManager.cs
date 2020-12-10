@@ -185,7 +185,7 @@ public class FileManager : MonoBehaviour
 	public static List<string> ReadTextAsset(TextAsset txt)
     {
         string[] lines = txt.text.Split('\n', '\r');
-
+  
         return ArrayToList(lines);
     }
 

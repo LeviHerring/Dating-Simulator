@@ -1,10 +1,14 @@
-UK "OI BRUV I'M BRI'ISH INNIT"
-", SORRY FOR MY VOICE, MY TEEF AREN'T VERY GOOD MATE"
 
-Vietnam "GORILLA, OOOO OOO AAA AAAA"
+*Avira "We have to tickle the monkey's face or the world will explode!" setBackground(Queen)
+*Terrance "What? Tickle it's face?"
+*Avira "Yes! But I can't do it! You have to!"
+*Terrance "Why me?"
+*Avira "Honestly.{a} That thing is too gross for me to touch!"
 
-1 American
-2 + "YASSS QUEEEN, LOOK IT'S THE QUEEN"
-3 setBackground(Queen)
-
-setBackground(Queen)
+choice "Tickle the monkey's face?"
+{
+  "Of course!"
+    Load(story_a1)
+  "No, that's stupid."
+    Load(story_b1)
+}

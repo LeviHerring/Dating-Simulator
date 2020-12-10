@@ -1,0 +1,1 @@
+narrator "The world exploded.{a} And no one even knows why???"

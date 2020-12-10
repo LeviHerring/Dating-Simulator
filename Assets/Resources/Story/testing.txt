@@ -1,0 +1,10 @@
+UK "OI BRUV I'M BRI'ISH INNIT"
+", SORRY FOR MY VOICE, MY TEEF AREN'T VERY GOOD MATE"
+
+Vietnam "GORILLA, OOOO OOO AAA AAAA"
+
+1 American
+2 + "YASSS QUEEEN, LOOK IT'S THE QUEEN"
+3 setBackground(Queen)
+
+setBackground(Queen)
